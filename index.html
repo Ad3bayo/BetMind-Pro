@@ -1,180 +1,201 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>BetMindPro Live</title>
+<title>BetMindPro V2</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+}
 body{
-background:#070b14;
+background:#050505;
 color:#fff;
-padding-bottom:80px;
 }
 header{
-padding:18px;
+background:linear-gradient(90deg,#00ff84,#00c853);
+padding:14px;
+text-align:center;
 font-size:28px;
 font-weight:900;
-text-align:center;
-background:linear-gradient(90deg,#00ff99,#00c853);
-color:#04120a;
+color:#000;
+position:sticky;
+top:0;
+z-index:999;
 }
-.wrap{padding:15px}
-.search{
+.topbar{
 display:flex;
-gap:10px;
-margin-bottom:15px;
+gap:8px;
+padding:10px;
+background:#0d0d0d;
 }
-.search input{
+.topbar input{
 flex:1;
-padding:14px;
+padding:10px;
 border:none;
-border-radius:12px;
+border-radius:10px;
 font-size:15px;
 }
-.search button{
-padding:14px 18px;
+.topbar button{
+padding:10px 14px;
 border:none;
-border-radius:12px;
-background:#00ff99;
-font-weight:800;
-}
-.card{
-background:#111827;
-padding:16px;
-border-radius:16px;
-margin-bottom:14px;
-box-shadow:0 8px 25px rgba(0,0,0,.35);
-}
-.team{
-display:flex;
-align-items:center;
-gap:12px;
-font-size:18px;
-font-weight:800;
-}
-.team img{
-width:42px;
-height:42px;
-object-fit:contain;
-background:#fff;
-border-radius:50%;
-padding:4px;
-}
-.small{
-font-size:13px;
-color:#b7c1df;
-margin-top:8px;
-}
-.pred{
-margin-top:12px;
-padding:10px;
 border-radius:10px;
-background:#0d2b1c;
-color:#00ff99;
-font-weight:800;
+background:#00ff84;
+font-weight:bold;
+}
+.tabs{
+display:flex;
+overflow:auto;
+gap:8px;
+padding:10px;
+background:#080808;
+}
+.tabs div{
+padding:8px 14px;
+background:#111;
+border-radius:30px;
+white-space:nowrap;
+font-size:14px;
+}
+.tabs .active{
+background:#00ff84;
+color:#000;
+font-weight:bold;
 }
 .ad{
-background:#1d2232;
-padding:16px;
-border-radius:16px;
+margin:10px;
+padding:10px;
+background:#1c1530;
+border-radius:12px;
 text-align:center;
-margin:14px 0;
-color:#ccc;
+color:#bbb;
+font-size:14px;
 }
-.loading{
-text-align:center;
-padding:30px;
-color:#00ff99;
+.section{
+padding:6px 10px;
+font-size:13px;
+color:#00ff84;
 font-weight:bold;
+}
+.match{
+background:#0c1020;
+margin:6px 8px;
+padding:10px;
+border-radius:12px;
+border:1px solid #111;
+}
+.line1{
+display:flex;
+justify-content:space-between;
+font-size:12px;
+color:#aaa;
+margin-bottom:6px;
+}
+.live{
+color:#ff3b3b;
+font-weight:bold;
+animation:blink 1s infinite;
+}
+@keyframes blink{
+50%{opacity:.3;}
+}
+.teams{
+font-size:15px;
+font-weight:bold;
+margin-bottom:8px;
+}
+.odds{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:6px;
+margin-bottom:8px;
+}
+.odds div{
+background:#121212;
+padding:8px;
+text-align:center;
+border-radius:8px;
+font-weight:bold;
+font-size:14px;
+}
+.ai{
+background:#003b1f;
+color:#00ff84;
+padding:6px;
+text-align:center;
+border-radius:8px;
+font-size:13px;
+font-weight:bold;
+}
+.footer{
+height:30px;
 }
 </style>
 </head>
 <body>
 
-<header>BetMindPro Live</header>
+<header>BetMindPro 🔥</header>
 
-<div class="wrap">
-
-<div class="search">
-<input type="text" id="teamInput" placeholder="Search team e.g Arsenal">
-<button onclick="searchTeam()">Search</button>
+<div class="topbar">
+<input placeholder="Search team, league...">
+<button>Go</button>
 </div>
 
-<div class="ad">📢 Sponsored Ad Space</div>
-
-<div id="results" class="loading">Loading trending teams...</div>
-
+<div class="tabs">
+<div class="active">🔴 LIVE</div>
+<div>📅 TODAY</div>
+<div>🤖 AI PICKS</div>
+<div>🎯 ACCA</div>
+<div>🔥 HOT</div>
 </div>
 
-<script>
-const API = "https://www.thesportsdb.com/api/v1/json/123/";
+<div class="ad">🎯 Sponsored Ad • Bet9ja / 1xBet / SportyBet</div>
 
-async function loadTrending(){
-document.getElementById("results").innerHTML = "Loading trending teams...";
-let teams = ["Arsenal","Chelsea","Barcelona","Real Madrid","Man United"];
-let html = "";
+<div class="section">LIVE NOW • 37 MATCHES</div>
 
-for(let t of teams){
-let res = await fetch(API + "searchteams.php?t=" + encodeURIComponent(t));
-let data = await res.json();
-
-if(data.teams && data.teams[0]){
-let team = data.teams[0];
-
-html += `
-<div class="card">
-<div class="team">
-<img src="${team.strTeamBadge}">
-<div>${team.strTeam}</div>
+<div class="match">
+<div class="line1"><span class="live">🔴 67'</span><span>EPL</span></div>
+<div class="teams">Arsenal 1 - 0 Chelsea</div>
+<div class="odds">
+<div>1.55</div><div>3.44</div><div>5.20</div>
 </div>
-<div class="small">${team.strLeague}</div>
-<div class="small">${team.strCountry}</div>
-<div class="pred">AI Pick: Strong Team Form Today 🔥</div>
+<div class="ai">AI PICK: Home Safe ✅</div>
 </div>
-`;
-}
-}
 
-document.getElementById("results").innerHTML = html;
-}
-
-async function searchTeam(){
-let query = document.getElementById("teamInput").value.trim();
-
-if(!query) return;
-
-document.getElementById("results").innerHTML = "Searching...";
-
-let res = await fetch(API + "searchteams.php?t=" + encodeURIComponent(query));
-let data = await res.json();
-
-if(!data.teams){
-document.getElementById("results").innerHTML = "No team found.";
-return;
-}
-
-let html = "";
-
-data.teams.forEach(team=>{
-html += `
-<div class="card">
-<div class="team">
-<img src="${team.strTeamBadge}">
-<div>${team.strTeam}</div>
+<div class="match">
+<div class="line1"><span class="live">🔴 22'</span><span>La Liga</span></div>
+<div class="teams">Madrid 0 - 0 Barca</div>
+<div class="odds">
+<div>2.10</div><div>3.00</div><div>3.40</div>
 </div>
-<div class="small">${team.strLeague}</div>
-<div class="small">${team.strCountry}</div>
-<div class="pred">AI Pick: Watch Odds Movement 📈</div>
+<div class="ai">AI PICK: Over 1.5 🔥</div>
 </div>
-`;
-});
 
-document.getElementById("results").innerHTML = html;
-}
+<div class="match">
+<div class="line1"><span class="live">🔴 44'</span><span>Serie A</span></div>
+<div class="teams">Inter 2 - 1 Milan</div>
+<div class="odds">
+<div>1.70</div><div>2.80</div><div>4.20</div>
+</div>
+<div class="ai">AI PICK: BTTS YES ⚽</div>
+</div>
 
-loadTrending();
-</script>
+<div class="match">
+<div class="line1"><span>⏰ 3:00PM</span><span>UCL</span></div>
+<div class="teams">PSG vs Bayern</div>
+<div class="odds">
+<div>2.40</div><div>3.10</div><div>2.55</div>
+</div>
+<div class="ai">AI PICK: Tight Game 🧠</div>
+</div>
+
+<div class="ad">💸 Odds Boost Sponsored Placement</div>
+
+<div class="footer"></div>
 
 </body>
 </html>
