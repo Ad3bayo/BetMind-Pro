@@ -3,201 +3,207 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BetMindPro - Viral Betting Style</title>
+<title>BetMindPro Premium</title>
 <style>
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial, sans-serif;
+font-family:Arial,Helvetica,sans-serif;
 }
+
 body{
-background:#0d0d0d;
+background:#0b0b0f;
 color:white;
+padding-bottom:90px;
 }
+
 header{
-background:linear-gradient(90deg,#00ff99,#0099ff);
-padding:15px;
-text-align:center;
+padding:20px;
+background:linear-gradient(90deg,#101522,#1d2b64,#0f2027);
 font-size:28px;
 font-weight:bold;
-letter-spacing:2px;
-}
-nav{
-display:flex;
-justify-content:space-around;
-background:#111;
-padding:12px;
-position:sticky;
-top:0;
-}
-nav a{
-color:white;
-text-decoration:none;
-font-size:14px;
-}
-.hero{
-padding:20px;
 text-align:center;
-background:url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=1200&q=80');
-background-size:cover;
-background-position:center;
+letter-spacing:1px;
+box-shadow:0 4px 20px rgba(0,0,0,.4);
 }
-.hero h1{
-font-size:34px;
-margin-bottom:10px;
-text-shadow:2px 2px 8px black;
+
+.topbox{
+padding:15px;
+display:flex;
+gap:10px;
+overflow:auto;
 }
-.hero p{
-font-size:18px;
-margin-bottom:20px;
+
+.stat{
+min-width:150px;
+background:#151a28;
+padding:15px;
+border-radius:15px;
+box-shadow:0 0 10px rgba(0,255,150,.1);
 }
-.btn{
-background:#00ff99;
-color:black;
-padding:12px 22px;
-border:none;
-border-radius:30px;
+
+.stat h3{
+font-size:14px;
+color:#aaa;
+margin-bottom:8px;
+}
+
+.stat p{
+font-size:22px;
 font-weight:bold;
-cursor:pointer;
-}
-.section{
-padding:20px;
-}
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:15px;
-}
-.card{
-background:#1a1a1a;
-padding:18px;
-border-radius:14px;
-box-shadow:0 0 10px rgba(0,255,153,0.2);
-}
-.card h3{
-margin-bottom:10px;
 color:#00ff99;
 }
-.badge{
-background:red;
-padding:4px 8px;
-border-radius:12px;
-font-size:12px;
-margin-left:10px;
-}
-.vip{
-background:linear-gradient(135deg,#ffcc00,#ff6600);
-color:black;
-padding:20px;
-border-radius:16px;
-text-align:center;
+
+.section{
+padding:15px;
+font-size:20px;
 font-weight:bold;
 }
-footer{
-background:#111;
-padding:20px;
-text-align:center;
-margin-top:20px;
-font-size:14px;
+
+.card{
+background:#141822;
+margin:12px;
+padding:18px;
+border-radius:18px;
+box-shadow:0 10px 20px rgba(0,0,0,.3);
 }
-input{
-width:100%;
-padding:12px;
-margin:8px 0;
+
+.match{
+display:flex;
+justify-content:space-between;
+margin-bottom:10px;
+font-size:18px;
+font-weight:bold;
+}
+
+.prediction{
+padding:10px;
+background:#0f2a1f;
+border-radius:10px;
+color:#00ff99;
+font-weight:bold;
+margin-top:10px;
+text-align:center;
+}
+
+.small{
+color:#bbb;
+font-size:13px;
+margin-top:8px;
+}
+
+.vip{
+margin:20px;
+padding:20px;
+border-radius:20px;
+background:linear-gradient(90deg,#ff9900,#ff0055);
+text-align:center;
+font-weight:bold;
+font-size:22px;
+box-shadow:0 0 20px rgba(255,0,90,.3);
+}
+
+button{
+margin-top:15px;
+padding:12px 20px;
 border:none;
-border-radius:8px;
+border-radius:12px;
+background:white;
+font-weight:bold;
+font-size:16px;
+cursor:pointer;
+}
+
+nav{
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+background:#111;
+display:flex;
+justify-content:space-around;
+padding:15px;
+border-top:1px solid #222;
+}
+
+nav div{
+color:#aaa;
+font-size:14px;
+text-align:center;
+}
+
+.active{
+color:#00ff99;
+font-weight:bold;
 }
 </style>
 </head>
 <body>
 
-<header>BETMINDPRO</header>
+<header>BetMindPro</header>
+
+<div class="topbox">
+<div class="stat">
+<h3>Today's Accuracy</h3>
+<p>92%</p>
+</div>
+
+<div class="stat">
+<h3>VIP Wins</h3>
+<p>14/16</p>
+</div>
+
+<div class="stat">
+<h3>Live Matches</h3>
+<p>27</p>
+</div>
+</div>
+
+<div class="section">AI Premium Predictions</div>
+
+<div class="card">
+<div class="match">
+<span>Arsenal</span>
+<span>vs</span>
+<span>Chelsea</span>
+</div>
+<div class="prediction">Over 2.5 Goals 🔥</div>
+<div class="small">Confidence: 94%</div>
+</div>
+
+<div class="card">
+<div class="match">
+<span>Barcelona</span>
+<span>vs</span>
+<span>Valencia</span>
+</div>
+<div class="prediction">Barcelona Win ✅</div>
+<div class="small">Confidence: 89%</div>
+</div>
+
+<div class="card">
+<div class="match">
+<span>PSG</span>
+<span>vs</span>
+<span>Lyon</span>
+</div>
+<div class="prediction">BTTS Yes ⚡</div>
+<div class="small">Confidence: 91%</div>
+</div>
+
+<div class="vip">
+VIP ACCESS ₦2,000 / Week
+<br>
+<button>Unlock VIP</button>
+</div>
 
 <nav>
-<a href="#">Home</a>
-<a href="#">Predictions</a>
-<a href="#">VIP</a>
-<a href="#">Stats</a>
-<a href="#">Account</a>
+<div class="active">Home</div>
+<div>Live</div>
+<div>VIP</div>
+<div>Profile</div>
 </nav>
-
-<section class="hero">
-<h1>WIN SMART DAILY</h1>
-<p>AI Powered Betting Predictions That Go Viral</p>
-<button class="btn">Get Today’s Sure Odds</button>
-</section>
-
-<section class="section">
-<h2>🔥 Trending Predictions</h2>
-<br>
-<div class="cards">
-
-<div class="card">
-<h3>Man City vs Arsenal <span class="badge">HOT</span></h3>
-<p>Prediction: Over 2.5 Goals</p>
-<p>Confidence: 92%</p>
-</div>
-
-<div class="card">
-<h3>Madrid vs Sevilla</h3>
-<p>Prediction: Madrid Win</p>
-<p>Confidence: 89%</p>
-</div>
-
-<div class="card">
-<h3>PSG vs Lyon <span class="badge">VIP</span></h3>
-<p>Prediction: Both Teams Score</p>
-<p>Confidence: 95%</p>
-</div>
-
-</div>
-</section>
-
-<section class="section">
-<h2>💰 VIP Subscription</h2>
-<br>
-<div class="vip">
-Get 10 Daily Sure Odds + Fixed Matches <br><br>
-₦3,000 Weekly | ₦10,000 Monthly <br><br>
-<button class="btn">Join VIP</button>
-</div>
-</section>
-
-<section class="section">
-<h2>📩 Get Free Odds Daily</h2>
-<br>
-<input type="text" placeholder="Enter WhatsApp Number">
-<input type="email" placeholder="Enter Email">
-<button class="btn">Subscribe Free</button>
-</section>
-
-<section class="section">
-<h2>📈 Why BetMindPro?</h2>
-<br>
-<div class="cards">
-
-<div class="card">
-<h3>AI Analysis</h3>
-<p>Deep stats + form + odds movement.</p>
-</div>
-
-<div class="card">
-<h3>Viral Odds</h3>
-<p>Predictions designed to attract attention.</p>
-</div>
-
-<div class="card">
-<h3>Nigeria Friendly</h3>
-<p>Built for SportyBet, Bet9ja & 1xBet users.</p>
-</div>
-
-</div>
-</section>
-
-<footer>
-BetMindPro © 2026 | Win Responsibly
-</footer>
 
 </body>
 </html>
