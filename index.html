@@ -3,204 +3,200 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>BetMindPro</title>
+<title>BetMindPro Viral V1</title>
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,Helvetica,sans-serif;
-}
-
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
 body{
-background:#0b0f1a;
-color:white;
-padding-bottom:80px;
+background:radial-gradient(circle at top,#10192f,#05070d 70%);
+color:#fff;
+padding-bottom:90px;
+overflow-x:hidden;
 }
-
 header{
-background:linear-gradient(90deg,#00c853,#009624);
-padding:18px;
-font-size:26px;
-font-weight:bold;
-text-align:center;
-letter-spacing:1px;
-}
-
-.topbar{
+padding:22px 18px;
 display:flex;
 justify-content:space-between;
-padding:15px;
-background:#121826;
-font-size:14px;
+align-items:center;
 }
-
-.balance{
-color:#00e676;
-font-weight:bold;
+.logo{
+font-size:28px;
+font-weight:900;
+letter-spacing:.5px;
+background:linear-gradient(90deg,#00ff99,#00c853);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
-
-.container{
-padding:15px;
+.live{
+font-size:12px;
+padding:6px 10px;
+border-radius:30px;
+background:#13221b;
+color:#00ff99;
+animation:pulse 1.2s infinite;
 }
-
+@keyframes pulse{
+0%{opacity:.5}50%{opacity:1}100%{opacity:.5}
+}
+.wrap{padding:0 16px}
 .card{
-background:#161d2e;
-padding:15px;
-border-radius:14px;
-margin-bottom:15px;
-box-shadow:0 0 10px rgba(0,0,0,.3);
-}
-
-.match{
-display:flex;
-justify-content:space-between;
-margin-bottom:10px;
-font-size:17px;
-}
-
-.prediction{
-background:#00c853;
-padding:8px 12px;
-border-radius:8px;
-font-weight:bold;
-display:inline-block;
-margin-top:10px;
-}
-
-.vip{
-background:linear-gradient(90deg,#ff9800,#ff5722);
+background:rgba(255,255,255,.04);
+backdrop-filter:blur(10px);
+border:1px solid rgba(255,255,255,.07);
+border-radius:20px;
 padding:18px;
-border-radius:15px;
-text-align:center;
-margin-top:20px;
+margin-bottom:16px;
+box-shadow:0 10px 30px rgba(0,0,0,.3);
 }
-
-.vip button{
-margin-top:12px;
-padding:12px 20px;
-border:none;
-border-radius:10px;
-background:white;
-font-weight:bold;
-cursor:pointer;
+.title{
+font-size:12px;
+color:#8ea0d2;
+margin-bottom:8px;
+letter-spacing:1px;
+text-transform:uppercase;
 }
-
-.adbox{
-background:#222;
-padding:20px;
-border-radius:12px;
-text-align:center;
-margin-top:15px;
-color:#bbb;
+.big{
+font-size:26px;
+font-weight:900;
+line-height:1.1;
 }
-
-.bottomnav{
-position:fixed;
-bottom:0;
-left:0;
-right:0;
-background:#121826;
-display:flex;
-justify-content:space-around;
-padding:14px 0;
-font-size:14px;
-}
-
-.bottomnav div{
-text-align:center;
-color:#aaa;
-}
-
-.bottomnav div.active{
-color:#00e676;
-font-weight:bold;
-}
-
-button.main{
+.green{color:#00ff99}
+.gold{color:#ffc107}
+.small{font-size:13px;color:#aab3d1;margin-top:6px}
+button{
 width:100%;
 padding:14px;
 border:none;
-border-radius:12px;
-background:#00c853;
-color:white;
-font-size:16px;
-font-weight:bold;
-margin-top:12px;
+border-radius:14px;
+font-size:15px;
+font-weight:800;
+margin-top:14px;
 cursor:pointer;
 }
-
-.notice{
-color:#ff9800;
+.btn-green{
+background:linear-gradient(90deg,#00ff99,#00c853);
+color:#04120a;
+}
+.btn-gold{
+background:linear-gradient(90deg,#ffd54f,#ff9800);
+color:#2b1700;
+}
+.blur{
+filter:blur(5px);
+user-select:none;
+}
+.stats{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+margin-bottom:16px;
+}
+.stat{
+background:rgba(255,255,255,.03);
+padding:16px;
+border-radius:16px;
+text-align:center;
+}
+.num{
+font-size:24px;
+font-weight:900;
+color:#00ff99;
+}
+.feed{
 font-size:13px;
-margin-top:10px;
+color:#dce3ff;
+padding:12px;
+border-radius:14px;
+background:rgba(255,255,255,.03);
+margin-bottom:10px;
+}
+.bottom{
+position:fixed;
+bottom:0;left:0;right:0;
+background:rgba(10,12,20,.95);
+backdrop-filter:blur(8px);
+display:flex;
+justify-content:space-around;
+padding:14px 0;
+border-top:1px solid rgba(255,255,255,.05);
+}
+.nav{
+font-size:12px;
+color:#8ea0d2;
+text-align:center;
+}
+.active{color:#00ff99;font-weight:800}
+.badge{
+display:inline-block;
+padding:5px 9px;
+border-radius:20px;
+font-size:11px;
+background:#1d1522;
+color:#ff5ec4;
+margin-top:8px;
 }
 </style>
 </head>
 <body>
 
-<header>BetMindPro</header>
+<header>
+<div class="logo">BetMindPro</div>
+<div class="live">● 12,421 LIVE</div>
+</header>
 
-<div class="topbar">
-<div>Welcome back</div>
-<div class="balance">₦12,450</div>
-</div>
-
-<div class="container">
+<div class="wrap">
 
 <div class="card">
-<h3>🔥 Today's AI Jackpot Pick</h3>
-<div class="match">
-<span>Arsenal vs Chelsea</span>
-<span>2.10</span>
-</div>
-<div class="prediction">Prediction: Arsenal Win</div>
-<p class="notice">87% Confidence</p>
-<button class="main">Unlock Full Ticket ₦500</button>
+<div class="title">Today’s Free AI Pick</div>
+<div class="big">Arsenal Win <span class="green">87%</span></div>
+<div class="small">AI confidence based on form + market movement</div>
+<button class="btn-green">Claim Free Pick</button>
 </div>
 
 <div class="card">
-<h3>⚽ Sure 3 Odds Combo</h3>
-<div class="match">
-<span>Madrid vs Sevilla</span>
-<span>Over 1.5</span>
-</div>
-<div class="match">
-<span>PSG vs Lyon</span>
-<span>PSG Win</span>
-</div>
-<div class="match">
-<span>Milan vs Roma</span>
-<span>BTTS</span>
-</div>
-<button class="main">Buy Combo ₦300</button>
+<div class="title">Locked Jackpot Pick</div>
+<div class="big blur">Man City + Over 2.5 + BTTS</div>
+<div class="badge">Invite 3 friends to unlock</div>
+<button class="btn-gold">Invite & Unlock</button>
 </div>
 
-<div class="vip">
-<h2>💎 VIP Subscription</h2>
-<p>Daily fixed games + Correct score + 10 Odds Acca</p>
-<button>Join VIP ₦3,000 / Month</button>
+<div class="stats">
+<div class="stat">
+<div class="num">8/10</div>
+<div class="small">AI Win Streak</div>
 </div>
-
-<div class="adbox">
-📢 Sponsored Ads Space <br>
-Earn money from betting ads here
+<div class="stat">
+<div class="num">₦42k</div>
+<div class="small">Top User Won</div>
+</div>
 </div>
 
 <div class="card">
-<h3>💰 Refer & Earn</h3>
-<p>Invite friends and earn ₦500 each</p>
-<button class="main">Get Referral Link</button>
+<div class="title">Community Buzz</div>
+<div class="feed">🔥 Tobi from Lagos just unlocked Jackpot Pick</div>
+<div class="feed">💰 221 users claimed today’s free pick</div>
+<div class="feed">🚀 51 people joined VIP in last 24h</div>
+</div>
+
+<div class="card">
+<div class="title">VIP Access</div>
+<div class="big gold">Daily Sure Odds + Correct Score</div>
+<div class="small">Private picks, early alerts, elite access</div>
+<button class="btn-gold">Join VIP</button>
+</div>
+
+<div class="card">
+<div class="title">Sponsored</div>
+<div class="small">Ad banner monetization zone</div>
 </div>
 
 </div>
 
-<div class="bottomnav">
-<div class="active">Home</div>
-<div>Predictions</div>
-<div>VIP</div>
-<div>Wallet</div>
-<div>Profile</div>
+<div class="bottom">
+<div class="nav active">Home</div>
+<div class="nav">Picks</div>
+<div class="nav">Invite</div>
+<div class="nav">VIP</div>
+<div class="nav">Profile</div>
 </div>
 
 </body>
