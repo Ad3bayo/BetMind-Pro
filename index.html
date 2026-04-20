@@ -3,201 +3,178 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>BetMindPro Viral V1</title>
+<title>BetMindPro Live</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
 body{
-background:radial-gradient(circle at top,#10192f,#05070d 70%);
+background:#070b14;
 color:#fff;
-padding-bottom:90px;
-overflow-x:hidden;
+padding-bottom:80px;
 }
 header{
-padding:22px 18px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-.logo{
+padding:18px;
 font-size:28px;
 font-weight:900;
-letter-spacing:.5px;
-background:linear-gradient(90deg,#00ff99,#00c853);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-.live{
-font-size:12px;
-padding:6px 10px;
-border-radius:30px;
-background:#13221b;
-color:#00ff99;
-animation:pulse 1.2s infinite;
-}
-@keyframes pulse{
-0%{opacity:.5}50%{opacity:1}100%{opacity:.5}
-}
-.wrap{padding:0 16px}
-.card{
-background:rgba(255,255,255,.04);
-backdrop-filter:blur(10px);
-border:1px solid rgba(255,255,255,.07);
-border-radius:20px;
-padding:18px;
-margin-bottom:16px;
-box-shadow:0 10px 30px rgba(0,0,0,.3);
-}
-.title{
-font-size:12px;
-color:#8ea0d2;
-margin-bottom:8px;
-letter-spacing:1px;
-text-transform:uppercase;
-}
-.big{
-font-size:26px;
-font-weight:900;
-line-height:1.1;
-}
-.green{color:#00ff99}
-.gold{color:#ffc107}
-.small{font-size:13px;color:#aab3d1;margin-top:6px}
-button{
-width:100%;
-padding:14px;
-border:none;
-border-radius:14px;
-font-size:15px;
-font-weight:800;
-margin-top:14px;
-cursor:pointer;
-}
-.btn-green{
+text-align:center;
 background:linear-gradient(90deg,#00ff99,#00c853);
 color:#04120a;
 }
-.btn-gold{
-background:linear-gradient(90deg,#ffd54f,#ff9800);
-color:#2b1700;
+.wrap{padding:15px}
+.search{
+display:flex;
+gap:10px;
+margin-bottom:15px;
 }
-.blur{
-filter:blur(5px);
-user-select:none;
+.search input{
+flex:1;
+padding:14px;
+border:none;
+border-radius:12px;
+font-size:15px;
 }
-.stats{
-display:grid;
-grid-template-columns:1fr 1fr;
+.search button{
+padding:14px 18px;
+border:none;
+border-radius:12px;
+background:#00ff99;
+font-weight:800;
+}
+.card{
+background:#111827;
+padding:16px;
+border-radius:16px;
+margin-bottom:14px;
+box-shadow:0 8px 25px rgba(0,0,0,.35);
+}
+.team{
+display:flex;
+align-items:center;
 gap:12px;
-margin-bottom:16px;
+font-size:18px;
+font-weight:800;
 }
-.stat{
-background:rgba(255,255,255,.03);
+.team img{
+width:42px;
+height:42px;
+object-fit:contain;
+background:#fff;
+border-radius:50%;
+padding:4px;
+}
+.small{
+font-size:13px;
+color:#b7c1df;
+margin-top:8px;
+}
+.pred{
+margin-top:12px;
+padding:10px;
+border-radius:10px;
+background:#0d2b1c;
+color:#00ff99;
+font-weight:800;
+}
+.ad{
+background:#1d2232;
 padding:16px;
 border-radius:16px;
 text-align:center;
+margin:14px 0;
+color:#ccc;
 }
-.num{
-font-size:24px;
-font-weight:900;
-color:#00ff99;
-}
-.feed{
-font-size:13px;
-color:#dce3ff;
-padding:12px;
-border-radius:14px;
-background:rgba(255,255,255,.03);
-margin-bottom:10px;
-}
-.bottom{
-position:fixed;
-bottom:0;left:0;right:0;
-background:rgba(10,12,20,.95);
-backdrop-filter:blur(8px);
-display:flex;
-justify-content:space-around;
-padding:14px 0;
-border-top:1px solid rgba(255,255,255,.05);
-}
-.nav{
-font-size:12px;
-color:#8ea0d2;
+.loading{
 text-align:center;
-}
-.active{color:#00ff99;font-weight:800}
-.badge{
-display:inline-block;
-padding:5px 9px;
-border-radius:20px;
-font-size:11px;
-background:#1d1522;
-color:#ff5ec4;
-margin-top:8px;
+padding:30px;
+color:#00ff99;
+font-weight:bold;
 }
 </style>
 </head>
 <body>
 
-<header>
-<div class="logo">BetMindPro</div>
-<div class="live">● 12,421 LIVE</div>
-</header>
+<header>BetMindPro Live</header>
 
 <div class="wrap">
 
+<div class="search">
+<input type="text" id="teamInput" placeholder="Search team e.g Arsenal">
+<button onclick="searchTeam()">Search</button>
+</div>
+
+<div class="ad">📢 Sponsored Ad Space</div>
+
+<div id="results" class="loading">Loading trending teams...</div>
+
+</div>
+
+<script>
+const API = "https://www.thesportsdb.com/api/v1/json/123/";
+
+async function loadTrending(){
+document.getElementById("results").innerHTML = "Loading trending teams...";
+let teams = ["Arsenal","Chelsea","Barcelona","Real Madrid","Man United"];
+let html = "";
+
+for(let t of teams){
+let res = await fetch(API + "searchteams.php?t=" + encodeURIComponent(t));
+let data = await res.json();
+
+if(data.teams && data.teams[0]){
+let team = data.teams[0];
+
+html += `
 <div class="card">
-<div class="title">Today’s Free AI Pick</div>
-<div class="big">Arsenal Win <span class="green">87%</span></div>
-<div class="small">AI confidence based on form + market movement</div>
-<button class="btn-green">Claim Free Pick</button>
+<div class="team">
+<img src="${team.strTeamBadge}">
+<div>${team.strTeam}</div>
 </div>
+<div class="small">${team.strLeague}</div>
+<div class="small">${team.strCountry}</div>
+<div class="pred">AI Pick: Strong Team Form Today 🔥</div>
+</div>
+`;
+}
+}
 
+document.getElementById("results").innerHTML = html;
+}
+
+async function searchTeam(){
+let query = document.getElementById("teamInput").value.trim();
+
+if(!query) return;
+
+document.getElementById("results").innerHTML = "Searching...";
+
+let res = await fetch(API + "searchteams.php?t=" + encodeURIComponent(query));
+let data = await res.json();
+
+if(!data.teams){
+document.getElementById("results").innerHTML = "No team found.";
+return;
+}
+
+let html = "";
+
+data.teams.forEach(team=>{
+html += `
 <div class="card">
-<div class="title">Locked Jackpot Pick</div>
-<div class="big blur">Man City + Over 2.5 + BTTS</div>
-<div class="badge">Invite 3 friends to unlock</div>
-<button class="btn-gold">Invite & Unlock</button>
+<div class="team">
+<img src="${team.strTeamBadge}">
+<div>${team.strTeam}</div>
 </div>
+<div class="small">${team.strLeague}</div>
+<div class="small">${team.strCountry}</div>
+<div class="pred">AI Pick: Watch Odds Movement 📈</div>
+</div>
+`;
+});
 
-<div class="stats">
-<div class="stat">
-<div class="num">8/10</div>
-<div class="small">AI Win Streak</div>
-</div>
-<div class="stat">
-<div class="num">₦42k</div>
-<div class="small">Top User Won</div>
-</div>
-</div>
+document.getElementById("results").innerHTML = html;
+}
 
-<div class="card">
-<div class="title">Community Buzz</div>
-<div class="feed">🔥 Tobi from Lagos just unlocked Jackpot Pick</div>
-<div class="feed">💰 221 users claimed today’s free pick</div>
-<div class="feed">🚀 51 people joined VIP in last 24h</div>
-</div>
-
-<div class="card">
-<div class="title">VIP Access</div>
-<div class="big gold">Daily Sure Odds + Correct Score</div>
-<div class="small">Private picks, early alerts, elite access</div>
-<button class="btn-gold">Join VIP</button>
-</div>
-
-<div class="card">
-<div class="title">Sponsored</div>
-<div class="small">Ad banner monetization zone</div>
-</div>
-
-</div>
-
-<div class="bottom">
-<div class="nav active">Home</div>
-<div class="nav">Picks</div>
-<div class="nav">Invite</div>
-<div class="nav">VIP</div>
-<div class="nav">Profile</div>
-</div>
+loadTrending();
+</script>
 
 </body>
 </html>
