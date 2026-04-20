@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BetMindPro Premium</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>BetMindPro</title>
 <style>
 *{
 margin:0;
@@ -13,129 +13,127 @@ font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
-background:#0b0b0f;
+background:#0b0f1a;
 color:white;
-padding-bottom:90px;
+padding-bottom:80px;
 }
 
 header{
-padding:20px;
-background:linear-gradient(90deg,#101522,#1d2b64,#0f2027);
-font-size:28px;
+background:linear-gradient(90deg,#00c853,#009624);
+padding:18px;
+font-size:26px;
 font-weight:bold;
 text-align:center;
 letter-spacing:1px;
-box-shadow:0 4px 20px rgba(0,0,0,.4);
 }
 
-.topbox{
-padding:15px;
+.topbar{
 display:flex;
-gap:10px;
-overflow:auto;
-}
-
-.stat{
-min-width:150px;
-background:#151a28;
+justify-content:space-between;
 padding:15px;
-border-radius:15px;
-box-shadow:0 0 10px rgba(0,255,150,.1);
-}
-
-.stat h3{
+background:#121826;
 font-size:14px;
-color:#aaa;
-margin-bottom:8px;
 }
 
-.stat p{
-font-size:22px;
+.balance{
+color:#00e676;
 font-weight:bold;
-color:#00ff99;
 }
 
-.section{
+.container{
 padding:15px;
-font-size:20px;
-font-weight:bold;
 }
 
 .card{
-background:#141822;
-margin:12px;
-padding:18px;
-border-radius:18px;
-box-shadow:0 10px 20px rgba(0,0,0,.3);
+background:#161d2e;
+padding:15px;
+border-radius:14px;
+margin-bottom:15px;
+box-shadow:0 0 10px rgba(0,0,0,.3);
 }
 
 .match{
 display:flex;
 justify-content:space-between;
 margin-bottom:10px;
-font-size:18px;
-font-weight:bold;
+font-size:17px;
 }
 
 .prediction{
-padding:10px;
-background:#0f2a1f;
-border-radius:10px;
-color:#00ff99;
+background:#00c853;
+padding:8px 12px;
+border-radius:8px;
 font-weight:bold;
+display:inline-block;
 margin-top:10px;
-text-align:center;
-}
-
-.small{
-color:#bbb;
-font-size:13px;
-margin-top:8px;
 }
 
 .vip{
-margin:20px;
-padding:20px;
-border-radius:20px;
-background:linear-gradient(90deg,#ff9900,#ff0055);
+background:linear-gradient(90deg,#ff9800,#ff5722);
+padding:18px;
+border-radius:15px;
 text-align:center;
-font-weight:bold;
-font-size:22px;
-box-shadow:0 0 20px rgba(255,0,90,.3);
+margin-top:20px;
 }
 
-button{
-margin-top:15px;
+.vip button{
+margin-top:12px;
 padding:12px 20px;
 border:none;
-border-radius:12px;
+border-radius:10px;
 background:white;
 font-weight:bold;
-font-size:16px;
 cursor:pointer;
 }
 
-nav{
+.adbox{
+background:#222;
+padding:20px;
+border-radius:12px;
+text-align:center;
+margin-top:15px;
+color:#bbb;
+}
+
+.bottomnav{
 position:fixed;
 bottom:0;
 left:0;
 right:0;
-background:#111;
+background:#121826;
 display:flex;
 justify-content:space-around;
-padding:15px;
-border-top:1px solid #222;
-}
-
-nav div{
-color:#aaa;
+padding:14px 0;
 font-size:14px;
-text-align:center;
 }
 
-.active{
-color:#00ff99;
+.bottomnav div{
+text-align:center;
+color:#aaa;
+}
+
+.bottomnav div.active{
+color:#00e676;
 font-weight:bold;
+}
+
+button.main{
+width:100%;
+padding:14px;
+border:none;
+border-radius:12px;
+background:#00c853;
+color:white;
+font-size:16px;
+font-weight:bold;
+margin-top:12px;
+cursor:pointer;
+}
+
+.notice{
+color:#ff9800;
+font-size:13px;
+margin-top:10px;
 }
 </style>
 </head>
@@ -143,67 +141,67 @@ font-weight:bold;
 
 <header>BetMindPro</header>
 
-<div class="topbox">
-<div class="stat">
-<h3>Today's Accuracy</h3>
-<p>92%</p>
+<div class="topbar">
+<div>Welcome back</div>
+<div class="balance">₦12,450</div>
 </div>
 
-<div class="stat">
-<h3>VIP Wins</h3>
-<p>14/16</p>
-</div>
-
-<div class="stat">
-<h3>Live Matches</h3>
-<p>27</p>
-</div>
-</div>
-
-<div class="section">AI Premium Predictions</div>
+<div class="container">
 
 <div class="card">
+<h3>🔥 Today's AI Jackpot Pick</h3>
 <div class="match">
-<span>Arsenal</span>
-<span>vs</span>
-<span>Chelsea</span>
+<span>Arsenal vs Chelsea</span>
+<span>2.10</span>
 </div>
-<div class="prediction">Over 2.5 Goals 🔥</div>
-<div class="small">Confidence: 94%</div>
+<div class="prediction">Prediction: Arsenal Win</div>
+<p class="notice">87% Confidence</p>
+<button class="main">Unlock Full Ticket ₦500</button>
 </div>
 
 <div class="card">
+<h3>⚽ Sure 3 Odds Combo</h3>
 <div class="match">
-<span>Barcelona</span>
-<span>vs</span>
-<span>Valencia</span>
+<span>Madrid vs Sevilla</span>
+<span>Over 1.5</span>
 </div>
-<div class="prediction">Barcelona Win ✅</div>
-<div class="small">Confidence: 89%</div>
-</div>
-
-<div class="card">
 <div class="match">
-<span>PSG</span>
-<span>vs</span>
-<span>Lyon</span>
+<span>PSG vs Lyon</span>
+<span>PSG Win</span>
 </div>
-<div class="prediction">BTTS Yes ⚡</div>
-<div class="small">Confidence: 91%</div>
+<div class="match">
+<span>Milan vs Roma</span>
+<span>BTTS</span>
+</div>
+<button class="main">Buy Combo ₦300</button>
 </div>
 
 <div class="vip">
-VIP ACCESS ₦2,000 / Week
-<br>
-<button>Unlock VIP</button>
+<h2>💎 VIP Subscription</h2>
+<p>Daily fixed games + Correct score + 10 Odds Acca</p>
+<button>Join VIP ₦3,000 / Month</button>
 </div>
 
-<nav>
+<div class="adbox">
+📢 Sponsored Ads Space <br>
+Earn money from betting ads here
+</div>
+
+<div class="card">
+<h3>💰 Refer & Earn</h3>
+<p>Invite friends and earn ₦500 each</p>
+<button class="main">Get Referral Link</button>
+</div>
+
+</div>
+
+<div class="bottomnav">
 <div class="active">Home</div>
-<div>Live</div>
+<div>Predictions</div>
 <div>VIP</div>
+<div>Wallet</div>
 <div>Profile</div>
-</nav>
+</div>
 
 </body>
 </html>
