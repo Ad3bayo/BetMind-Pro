@@ -1,201 +1,262 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>BetMindPro V2</title>
+<title>BetMindPro Live Hybrid</title>
+
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial, sans-serif;
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+:root{
+--bg:#f7f7f7;
+--card:#ffffff;
+--text:#111;
+--muted:#666;
+--accent:#0a84ff;
+--line:#e8e8e8;
 }
-body{
-background:#050505;
-color:#fff;
-}
+body{background:var(--bg);color:var(--text)}
 header{
-background:linear-gradient(90deg,#00ff84,#00c853);
-padding:14px;
-text-align:center;
-font-size:28px;
-font-weight:900;
-color:#000;
-position:sticky;
-top:0;
-z-index:999;
+position:sticky;top:0;z-index:999;
+display:flex;justify-content:space-between;align-items:center;
+padding:10px 12px;background:var(--card);border-bottom:1px solid var(--line)
 }
-.topbar{
-display:flex;
-gap:8px;
-padding:10px;
-background:#0d0d0d;
-}
-.topbar input{
-flex:1;
-padding:10px;
-border:none;
-border-radius:10px;
-font-size:15px;
-}
-.topbar button{
-padding:10px 14px;
-border:none;
-border-radius:10px;
-background:#00ff84;
-font-weight:bold;
+.logo{font-size:22px;font-weight:900}
+button{
+border:none;border-radius:8px;padding:8px 12px;
+background:var(--accent);color:#fff;font-weight:700
 }
 .tabs{
-display:flex;
-overflow:auto;
-gap:8px;
-padding:10px;
-background:#080808;
+display:flex;gap:6px;overflow:auto;padding:8px;background:var(--card);
+border-bottom:1px solid var(--line)
 }
-.tabs div{
-padding:8px 14px;
-background:#111;
-border-radius:30px;
-white-space:nowrap;
-font-size:14px;
+.tab{
+padding:7px 12px;border-radius:20px;background:#ececec;
+font-size:13px;white-space:nowrap;cursor:pointer
 }
-.tabs .active{
-background:#00ff84;
-color:#000;
-font-weight:bold;
-}
-.ad{
-margin:10px;
-padding:10px;
-background:#1c1530;
-border-radius:12px;
-text-align:center;
-color:#bbb;
-font-size:14px;
-}
-.section{
-padding:6px 10px;
-font-size:13px;
-color:#00ff84;
-font-weight:bold;
-}
+.tab.active{background:var(--accent);color:#fff}
+.wrap{padding:6px}
 .match{
-background:#0c1020;
-margin:6px 8px;
-padding:10px;
-border-radius:12px;
-border:1px solid #111;
-}
-.line1{
-display:flex;
-justify-content:space-between;
-font-size:12px;
-color:#aaa;
-margin-bottom:6px;
-}
-.live{
-color:#ff3b3b;
-font-weight:bold;
-animation:blink 1s infinite;
-}
-@keyframes blink{
-50%{opacity:.3;}
-}
-.teams{
-font-size:15px;
-font-weight:bold;
-margin-bottom:8px;
-}
-.odds{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:6px;
-margin-bottom:8px;
-}
-.odds div{
-background:#121212;
+background:var(--card);
 padding:8px;
-text-align:center;
+margin-bottom:5px;
 border-radius:8px;
-font-weight:bold;
-font-size:14px;
+border:1px solid var(--line)
 }
-.ai{
-background:#003b1f;
-color:#00ff84;
+.row1{
+display:flex;justify-content:space-between;
+font-size:11px;color:var(--muted);margin-bottom:4px
+}
+.live{color:#e53935;font-weight:800}
+.row2{
+display:grid;grid-template-columns:1fr auto 1fr;
+gap:6px;align-items:center;
+font-size:13px;font-weight:700
+}
+.home{text-align:left}
+.score{text-align:center;font-size:14px}
+.away{text-align:right}
+.row3{
+display:grid;grid-template-columns:repeat(3,1fr);
+gap:4px;margin-top:6px
+}
+.odd{
+background:#f0f0f0;
 padding:6px;
 text-align:center;
+border-radius:6px;
+font-size:12px;
+cursor:pointer
+}
+.ai{
+margin-top:4px;
+font-size:11px;
+color:var(--accent);
+font-weight:700
+}
+.ad{
+padding:8px;
+margin:6px;
+background:#fff3cd;
+border:1px solid #ffe69c;
 border-radius:8px;
-font-size:13px;
-font-weight:bold;
+font-size:12px;
+text-align:center
 }
-.footer{
-height:30px;
-}
+.loading{text-align:center;padding:20px;color:var(--muted)}
 </style>
 </head>
+
 <body>
 
-<header>BetMindPro 🔥</header>
-
-<div class="topbar">
-<input placeholder="Search team, league...">
-<button>Go</button>
-</div>
+<header>
+<div class="logo">BetMindPro</div>
+<button onclick="toggleTheme()">Theme</button>
+</header>
 
 <div class="tabs">
-<div class="active">🔴 LIVE</div>
-<div>📅 TODAY</div>
-<div>🤖 AI PICKS</div>
-<div>🎯 ACCA</div>
-<div>🔥 HOT</div>
+<div class="tab active" onclick="activate(this)">LIVE</div>
+<div class="tab" onclick="activate(this)">TODAY</div>
+<div class="tab" onclick="activate(this)">FINISHED</div>
+<div class="tab" onclick="activate(this)">HOT</div>
+<div class="tab" onclick="activate(this)">NBA</div>
 </div>
 
-<div class="ad">🎯 Sponsored Ad • Bet9ja / 1xBet / SportyBet</div>
+<div class="ad">📢 Sponsored Ad Slot</div>
 
-<div class="section">LIVE NOW • 37 MATCHES</div>
+<div class="wrap" id="games">
+<div class="loading">Loading live matches...</div>
+</div>
 
+<script>
+const API_KEY = "2ca838566124255af057f8e817c5d2c8";
+
+let dark=false;
+
+function toggleTheme(){
+dark=!dark;
+if(dark){
+document.documentElement.style.setProperty('--bg','#0b0b0b');
+document.documentElement.style.setProperty('--card','#151515');
+document.documentElement.style.setProperty('--text','#fff');
+document.documentElement.style.setProperty('--muted','#aaa');
+document.documentElement.style.setProperty('--accent','#00e676');
+document.documentElement.style.setProperty('--line','#222');
+}else{
+document.documentElement.style.setProperty('--bg','#f7f7f7');
+document.documentElement.style.setProperty('--card','#fff');
+document.documentElement.style.setProperty('--text','#111');
+document.documentElement.style.setProperty('--muted','#666');
+document.documentElement.style.setProperty('--accent','#0a84ff');
+document.documentElement.style.setProperty('--line','#e8e8e8');
+}
+}
+
+function activate(el){
+document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+el.classList.add('active');
+}
+
+function randOdds(){
+return (1 + Math.random()*4).toFixed(2);
+}
+
+async function loadGames(){
+
+try{
+const res = await fetch("https://v3.football.api-sports.io/fixtures?live=all",{
+headers:{
+"x-apisports-key":API_KEY
+}
+});
+
+const data = await res.json();
+renderApiFootball(data.response);
+
+}catch(e){
+fallbackSportsDB();
+}
+
+}
+
+function renderApiFootball(list){
+
+if(!list || list.length===0){
+fallbackSportsDB();
+return;
+}
+
+let html = "";
+
+list.slice(0,40).forEach((m,i)=>{
+
+html += `
 <div class="match">
-<div class="line1"><span class="live">🔴 67'</span><span>EPL</span></div>
-<div class="teams">Arsenal 1 - 0 Chelsea</div>
-<div class="odds">
-<div>1.55</div><div>3.44</div><div>5.20</div>
-</div>
-<div class="ai">AI PICK: Home Safe ✅</div>
+<div class="row1">
+<span class="live">🔴 ${m.fixture.status.elapsed || 0}'</span>
+<span>${m.league.name}</span>
 </div>
 
+<div class="row2">
+<div class="home">${m.teams.home.name}</div>
+<div class="score">${m.goals.home} - ${m.goals.away}</div>
+<div class="away">${m.teams.away.name}</div>
+</div>
+
+<div class="row3">
+<div class="odd" onclick="alert('Home')">${randOdds()}</div>
+<div class="odd" onclick="alert('Draw')">${randOdds()}</div>
+<div class="odd" onclick="alert('Away')">${randOdds()}</div>
+</div>
+
+<div class="ai">AI: ${m.goals.home > m.goals.away ? "Home Momentum" : "Open Game"}</div>
+</div>
+`;
+
+if((i+1)%8===0){
+html += `<div class="ad">🔥 Native Ad Placement</div>`;
+}
+
+});
+
+document.getElementById("games").innerHTML = html;
+}
+
+async function fallbackSportsDB(){
+
+try{
+const res = await fetch("https://www.thesportsdb.com/api/v1/json/123/eventsday.php?d=2026-04-20&s=Soccer");
+const data = await res.json();
+
+if(!data.events){
+document.getElementById("games").innerHTML="No matches found.";
+return;
+}
+
+let html = "";
+
+data.events.slice(0,30).forEach((m,i)=>{
+
+html += `
 <div class="match">
-<div class="line1"><span class="live">🔴 22'</span><span>La Liga</span></div>
-<div class="teams">Madrid 0 - 0 Barca</div>
-<div class="odds">
-<div>2.10</div><div>3.00</div><div>3.40</div>
-</div>
-<div class="ai">AI PICK: Over 1.5 🔥</div>
+<div class="row1">
+<span>⏰ Today</span>
+<span>${m.strLeague}</span>
 </div>
 
-<div class="match">
-<div class="line1"><span class="live">🔴 44'</span><span>Serie A</span></div>
-<div class="teams">Inter 2 - 1 Milan</div>
-<div class="odds">
-<div>1.70</div><div>2.80</div><div>4.20</div>
-</div>
-<div class="ai">AI PICK: BTTS YES ⚽</div>
+<div class="row2">
+<div class="home">${m.strHomeTeam}</div>
+<div class="score">vs</div>
+<div class="away">${m.strAwayTeam}</div>
 </div>
 
-<div class="match">
-<div class="line1"><span>⏰ 3:00PM</span><span>UCL</span></div>
-<div class="teams">PSG vs Bayern</div>
-<div class="odds">
-<div>2.40</div><div>3.10</div><div>2.55</div>
-</div>
-<div class="ai">AI PICK: Tight Game 🧠</div>
+<div class="row3">
+<div class="odd">${randOdds()}</div>
+<div class="odd">${randOdds()}</div>
+<div class="odd">${randOdds()}</div>
 </div>
 
-<div class="ad">💸 Odds Boost Sponsored Placement</div>
+<div class="ai">AI: Upcoming Fixture</div>
+</div>
+`;
 
-<div class="footer"></div>
+if((i+1)%8===0){
+html += `<div class="ad">📢 Sponsored Ad</div>`;
+}
+
+});
+
+document.getElementById("games").innerHTML = html;
+
+}catch(e){
+document.getElementById("games").innerHTML="Unable to load data.";
+}
+
+}
+
+loadGames();
+setInterval(loadGames,30000);
+</script>
 
 </body>
 </html>
